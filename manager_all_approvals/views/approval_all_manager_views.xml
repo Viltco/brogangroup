@@ -1,0 +1,285 @@
+<odoo>
+
+    <record id="view_hr_expense_sheet_form_inherit" model="ir.ui.view">
+        <field name="name">hr.expense.sheet.form.inherit</field>
+        <field name="model">hr.expense.sheet</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header/button[@name='action_sheet_move_create']" position="after">
+                <button name="button_review"
+                        type="object"
+                        states="review"
+                        string="Review"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_hr_expense"/>
+                <button name="button_approved"
+                        type="object"
+                        states="approved"
+                        string="Approve"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_expense"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header/button[@name='action_rfq_send']" position="after">
+                <button name="button_review"
+                        type="object"
+                        states="to_review"
+                        string="Review"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_purchase_order"
+                />
+                <button name="button_approved"
+                        type="object"
+                        states="approve"
+                        string="Approve"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_purchase_order"
+                />
+            </xpath>
+
+            <xpath expr="//header//button[@name='button_confirm']" position="after">
+                <button name="action_reset"
+                        type="object"
+                        states="rejected"
+                        string="Reset"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_purchase_order"
+                />
+                <button name="button_reject"
+                        type="object"
+                        states="to_review"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_purchase_order"
+                />
+                <button name="button_approve_reject"
+                        type="object"
+                        states="approve"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_purchase_order"
+                />
+            </xpath>
+
+            <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                <field name="review_by_id"/>
+                <field name="approve_by_id"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">view.sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header/button[@name='action_quotation_send']" position="after">
+                <button name="button_review"
+                        type="object"
+                        states="to_review"
+                        string="Review"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_sale_order"
+                />
+                <button name="button_approved"
+                        type="object"
+                        states="approve"
+                        string="Approve"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_sale_order"
+                />
+            </xpath>
+
+            <xpath expr="//header//button[@name='action_confirm']" position="after">
+                 <button name="action_reset"
+                        type="object"
+                        states="rejected"
+                        string="Reset"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_sale_order"
+                />
+                <button name="button_reject"
+                        type="object"
+                        states="to_review"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_sale_order"
+                />
+                <button name="button_approve_reject"
+                        type="object"
+                        states="approve"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_sale_order"
+                />
+            </xpath>
+
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="review_by_id"/>
+                <field name="approve_by_id"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_account_move_form_inherit" model="ir.ui.view">
+         <field name="name">view.account.move.form.inherit</field>
+         <field name="model">account.move</field>
+         <field name="inherit_id" ref="account.view_move_form"/>
+         <field name="arch" type="xml">
+
+             <xpath expr="//header/button[@name='action_post']" position="after">
+<!--                 <button name="action_posts"-->
+<!--                        type="object"-->
+<!--                        states="draft"-->
+<!--                        string="Post"-->
+<!--                        class="oe_highlight"-->
+<!--                />-->
+                 <button name="button_review"
+                        type="object"
+                        states="to_review"
+                        string="Review"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_invoice_bill"
+                />
+                <button name="button_approved"
+                        type="object"
+                        states="approve"
+                        string="Approve"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_invoice_bill"
+                />
+             </xpath>
+
+             <xpath expr="//header//button[@name='button_draft']" position="after">
+                 <button name="action_reset"
+                        type="object"
+                        states="rejected"
+                        string="Reset"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_invoice_bill"
+                />
+                <button name="button_reject"
+                        type="object"
+                        states="to_review"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_invoice_bill"
+                />
+                 <button name="button_approve_reject"
+                        type="object"
+                        states="approve"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_invoice_bill"
+                />
+             </xpath>
+
+             <xpath expr="//field[@name='to_check']" position="after">
+                <field name="review_by_id"/>
+                <field name="approve_by_id"/>
+             </xpath>
+
+             <xpath expr="//header/button[@name='action_post']" position="attributes">
+                 <attribute name="invisible">0</attribute>
+             </xpath>
+
+             <xpath expr="//header/button[@name='preview_invoice']" position="attributes">
+                 <attribute name="attrs">{'invisible': ['|', ('state', 'in', ['to_review','approve']),('move_type', 'not in', ('out_invoice', 'out_refund'))]}</attribute>
+             </xpath>
+
+             <xpath expr="//field[@name='invoice_date']" position="attributes">
+<!--                 <attribute name="required">1</attribute>-->
+                 <attribute name="attrs">{'required': [('move_type', 'in', ('out_invoice', 'in_invoice'))]}</attribute>
+             </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+         <field name="name">account.payment.form.inherit</field>
+         <field name="model">account.payment</field>
+         <field name="inherit_id" ref="account.view_account_payment_form"/>
+         <field name="arch" type="xml">
+
+             <xpath expr="//header/button[@name='action_post']" position="after">
+                 <button name="button_review"
+                        type="object"
+                        states="to_review"
+                        string="Review"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_payment"
+                />
+                <button name="button_approved"
+                        type="object"
+                        states="approve"
+                        string="Approve"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_payment"
+                />
+             </xpath>
+
+             <xpath expr="//header//button[@name='action_draft']" position="after">
+                 <button name="action_reset"
+                        type="object"
+                        states="rejected"
+                        string="Reset"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_payment"
+                />
+                <button name="button_reject"
+                        type="object"
+                        states="to_review"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_review_payment"
+                />
+                <button name="button_approve_reject"
+                        type="object"
+                        states="approve"
+                        string="Reject"
+                        class="oe_highlight"
+                        groups="manager_all_approvals.group_approve_payment"
+                />
+             </xpath>
+
+             <xpath expr="//field[@name='ref']" position="after">
+                <field name="review_by_id"/>
+                <field name="approve_by_id"/>
+             </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_hr_employee_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='father_name']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='job_title']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
